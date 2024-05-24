@@ -13,19 +13,27 @@ page1 = ui.navset_card_underline(
     title="Median House Price by County",
 )
 
-page2 = ui.navset_card_underline(
-    ui.nav_panel("Plot", ui.output_plot("hist")),
-    ui.nav_panel("Table", ui.output_data_frame("data")),
-    footer=ui.input_select(
-        "var", "Select variable", choices=["bill_length_mm", "body_mass_g"]
-    ),
-    title="Penguins data",
+# page2 = ui.navset_card_underline(
+#     ui.nav_panel("Plot", ui.output_plot("hist")),
+#     ui.nav_panel("Table", ui.output_data_frame("data")),
+#     footer=ui.input_select(
+#         "var", "Select variable", choices=["bill_length_mm", "body_mass_g"]
+#     ),
+#     title="Penguins data",
+# )
+
+page2 = ui.card(
+    ui.card_header("This is the header"),
+    ui.p("This is the body."),
+    ui.p("This is still the body."),
+    ui.card_footer("This is the footer"),
+    full_screen=True,
 )
 
 app_ui = ui.page_navbar(
     ui.nav_spacer(),  # Push the navbar items to the right
-    ui.nav_panel("Page 1", page1),
-    ui.nav_panel("Page 2", page2),
+    ui.nav_panel("Map", page1),
+    ui.nav_panel("Stats", page2),
     title="House Prices Ireland",
 )
 
