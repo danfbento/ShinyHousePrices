@@ -7,11 +7,17 @@ from shared import df
 from shiny import App, render, ui
 
 # The contents of the first 'page' is a navset with two 'panels'.
-page1 = ui.navset_card_underline(
-    ui.nav_panel("Map", output_widget("map")),
-    
-    title="Median House Price by County",
+page1 = ui.page_fluid(
+    ui.card(
+        ui.card_header("Median Hourse Price by County"),
+        ui.p(output_widget("map"))
+    )
 )
+# page1 = ui.navset_card_underline(
+#     ui.nav_panel("Map", output_widget("map")),
+    
+#     title="Median House Price by County",
+# )
 
 # page2 = ui.navset_card_underline(
 #     ui.nav_panel("Plot", ui.output_plot("hist")),
@@ -22,12 +28,25 @@ page1 = ui.navset_card_underline(
 #     title="Penguins data",
 # )
 
-page2 = ui.card(
-    ui.card_header("This is the header"),
-    ui.p("This is the body."),
-    ui.p("This is still the body."),
-    ui.card_footer("This is the footer"),
-    full_screen=True,
+page2 = ui.page_fluid(
+    ui.card(
+        ui.card_header("Residential Property Price Register"),
+        ui.output_data_frame("data"),
+        ui.p("This is still the body."),
+        ui.card_footer(
+            ui.input_select(
+                "var", "Select variable", choices=["bill_length_mm", "body_mass_g"]
+            )
+        ),
+        full_screen=True
+    ),
+    ui.card(
+        ui.card_header("This is the header"),
+        ui.p("This is the body."),
+        ui.p("This is still the body."),
+        ui.card_footer("This is the footer"),
+        full_screen=True
+    )
 )
 
 app_ui = ui.page_navbar(
