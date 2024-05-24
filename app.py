@@ -1,6 +1,6 @@
 import seaborn as sns
 from ipyleaflet import Map  
-from shinywidgets import output_widget, render_widget 
+from shinywidgets import output_widget, render_widget  
 
 # Import data from shared.py
 from shared import df
@@ -8,11 +8,11 @@ from shiny import App, render, ui
 
 # The contents of the first 'page' is a navset with two 'panels'.
 page1 = ui.navset_card_underline(
-    ui.page_fluid(output_widget("map")),    
-    title="Median House Price by Year",
+    ui.nav_panel("Map", output_widget("map")),
+    
+    title="Median House Price by County",
 )
 
-# The contents of the first 'second' is a navset with two 'panels'.
 page2 = ui.navset_card_underline(
     ui.nav_panel("Plot", ui.output_plot("hist")),
     ui.nav_panel("Table", ui.output_data_frame("data")),
@@ -24,8 +24,8 @@ page2 = ui.navset_card_underline(
 
 app_ui = ui.page_navbar(
     ui.nav_spacer(),  # Push the navbar items to the right
-    ui.nav_panel("Map", page1),
-    ui.nav_panel("Stats", page2),
+    ui.nav_panel("Page 1", page1),
+    ui.nav_panel("Page 2", page2),
     title="House Prices Ireland",
 )
 
@@ -33,7 +33,7 @@ app_ui = ui.page_navbar(
 def server(input, output, session):
     @render_widget  
     def map():
-        return Map(center=(50.6252978589571, 0.34580993652344), zoom=3)
+        return Map(center=(53.4494762, -7.5029786), zoom=6)
     
     @render.plot
     def hist():
