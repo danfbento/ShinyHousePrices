@@ -6,6 +6,9 @@ from shinywidgets import output_widget, render_widget
 from shared import df
 from shiny import App, render, ui
 
+# Import data from plot_utils.py
+from utils.plot_utils import fullRRP
+
 # The contents of the first 'page' is a navset with two 'panels'.
 page1 = ui.page_fluid(
     ui.card(
@@ -13,11 +16,6 @@ page1 = ui.page_fluid(
         ui.p(output_widget("map"))
     )
 )
-# page1 = ui.navset_card_underline(
-#     ui.nav_panel("Map", output_widget("map")),
-    
-#     title="Median House Price by County",
-# )
 
 # page2 = ui.navset_card_underline(
 #     ui.nav_panel("Plot", ui.output_plot("hist")),
@@ -42,7 +40,7 @@ page2 = ui.page_fluid(
     ),
     ui.card(
         ui.card_header("This is the header"),
-        ui.p("This is the body."),
+        ui.output_data_frame("read_fullRRP"),
         ui.p("This is still the body."),
         ui.card_footer("This is the footer"),
         full_screen=True
@@ -70,6 +68,9 @@ def server(input, output, session):
     @render.data_frame
     def data():
         return df[["species", "island", input.var()]]
-
+    
+    @render.data_frame
+    def read_fullRRP():
+        return fullRRP
 
 app = App(app_ui, server)
