@@ -3,7 +3,7 @@ from ipyleaflet import Map
 from shinywidgets import output_widget, render_widget  
 
 # Import data from shared.py
-from shared import df
+#from shared import df
 from shiny import App, render, ui
 
 # Import data from plot_utils.py
@@ -27,19 +27,19 @@ page1 = ui.page_fluid(
 # )
 
 page2 = ui.page_fluid(
+    # ui.card(
+    #     ui.card_header("Residential Property Price Register"),
+    #     ui.output_data_frame("data"),
+    #     ui.p("This is still the body."),
+    #     ui.card_footer(
+    #         ui.input_select(
+    #             "var", "Select variable", choices=["bill_length_mm", "body_mass_g"]
+    #         )
+    #     ),
+    #     full_screen=True
+    # ),
     ui.card(
         ui.card_header("Residential Property Price Register"),
-        ui.output_data_frame("data"),
-        ui.p("This is still the body."),
-        ui.card_footer(
-            ui.input_select(
-                "var", "Select variable", choices=["bill_length_mm", "body_mass_g"]
-            )
-        ),
-        full_screen=True
-    ),
-    ui.card(
-        ui.card_header("This is the header"),
         ui.output_data_frame("read_fullRRP"),
         ui.p("This is still the body."),
         ui.card_footer("This is the footer"),
@@ -65,12 +65,14 @@ def server(input, output, session):
         p = sns.histplot(df, x=input.var(), facecolor="#007bc2", edgecolor="white")
         return p.set(xlabel=None)
 
-    @render.data_frame
-    def data():
-        return df[["species", "island", input.var()]]
+    # @render.data_frame
+    # def data():
+    #     return df[["species", "island", input.var()]]
     
     @render.data_frame
     def read_fullRRP():
-        return fullRRP
+        # Taking 52 seconds to load
+        return render.DataTable(fullRRP, filters=True)
+        #return fullRRP
 
 app = App(app_ui, server)
