@@ -3,7 +3,7 @@ from ipyleaflet import Map
 from shinywidgets import output_widget, render_widget  
 
 # Import data from shared.py
-#from shared import df
+from shared import df
 from shiny import App, render, ui
 
 # Import data from plot_utils.py

@@ -1,0 +1,41 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis version="3.22.4-Białowieża">
+  <identifier>Counties_AvgYear</identifier>
+  <parentidentifier></parentidentifier>
+  <language>ENG</language>
+  <type>dataset</type>
+  <title>Counties - National Statutory Boundaries - 2019</title>
+  <abstract>The division into counties based on the model used in the English system, was introduced gradually by English settlers from the late 12th century onwards. These land divisions were formed following the Norman invasion of Ireland in imitation of the counties then in use as units of local government in the Kingdom of England. The older term "shire" was historically equivalent to "county". The principal function of the county was to impose royal control in the areas of taxation, security and the administration of justice at local level. Following a survey under the 1825 Boundary Survey Act, an extensive series of maps of Ireland was created by the Irish division of the Ordnance Survey for taxation purposes. These maps both documented and standardised the boundaries of the thirty two counties of Ireland.
+Coordinate Reference System: Irish Transverse Mercator.
+This dataset is provided by Tailte Éireann – National Mapping Division
+
+
+Counties dataset generated from the 2019 National Statutory Boundary dataset. Ungeneralised.</abstract>
+  <keywords vocabulary="Search keys">
+    <keyword>dgigovernment</keyword>
+    <keyword>Statutory Boundaries</keyword>
+  </keywords>
+  <links/>
+  <fees></fees>
+  <constraints type="Limitations of use">https://creativecommons.org/licenses/by/4.0/
+ 
+Ordnance Survey Ireland (OSi) content published as open data is licenced under a Creative Commons Attribution 4.0 International (CC BY 4.0) licence, details found at the above link
+ 
+All boundary and topographical data made available as open data by Ordnance Survey Ireland (OSi) that is generalised resulting in reduction and simplification of features which may affect accuracies and should be used for reference purposes only. The result of this process is that boundaries shown may not be in accordance with the Boundary Survey (Ireland) Act(s). All data is used at your own risk and OSi is in no way liable for any errors or inaccuracies in the data made available or for the consequences of any actions taken on the basis of the information provided.</constraints>
+  <rights>© National Mapping Division of Tailte Éireann</rights>
+  <encoding></encoding>
+  <crs>
+    <spatialrefsys>
+      <wkt>PROJCRS["IRENET95 / Irish Transverse Mercator",BASEGEOGCRS["IRENET95",DATUM["IRENET95",ELLIPSOID["GRS 1980",6378137,298.257222101,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4173]],CONVERSION["Irish Transverse Mercator",METHOD["Transverse Mercator",ID["EPSG",9807]],PARAMETER["Latitude of natural origin",53.5,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",-8,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.99982,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",600000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",750000,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Engineering survey, topographic mapping."],AREA["Ireland - onshore. United Kingdom (UK) - Northern Ireland (Ulster) - onshore."],BBOX[51.39,-10.56,55.43,-5.34]],ID["EPSG",2157]]</wkt>
+      <proj4>+proj=tmerc +lat_0=53.5 +lon_0=-8 +k=0.99982 +x_0=600000 +y_0=750000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs</proj4>
+      <srsid>148</srsid>
+      <srid>2157</srid>
+      <authid>EPSG:2157</authid>
+      <description>IRENET95 / Irish Transverse Mercator</description>
+      <projectionacronym>tmerc</projectionacronym>
+      <ellipsoidacronym>EPSG:7019</ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </crs>
+  <extent/>
+</qgis>
