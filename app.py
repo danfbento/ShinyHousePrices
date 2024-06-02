@@ -1,13 +1,29 @@
 import seaborn as sns
-from ipyleaflet import Map  
+from ipyleaflet import GeoJSON, Map, Marker  
 from shinywidgets import output_widget, render_widget  
-
-# Import data from shared.py
-from shared import df
 from shiny import App, render, ui
 
-# Import data from plot_utils.py
-from utils.plot_utils import fullRRP
+# Local imports
+from shared import df # shared.py
+from utils.plot_utils import fullRRP # plot_utils.py
+
+
+##################### TO DO: FIND A BETTER PLACE FOR THE BELOW
+import json
+import pathlib
+import random
+
+here = pathlib.Path(__file__)
+#print(here)
+with open(here.parent / "data/Counties_AvgYear.geojson", "r") as f:
+    country_boundaries = json.load(f)
+
+def random_color(feature):
+    return {
+        "color": "black",
+        "fillColor": random.choice(["red", "yellow", "green", "orange"]),
+    }
+##################### TO DO: FIND A BETTER PLACE FOR THE ABOVE
 
 # The contents of the first 'page' is a navset with two 'panels'.
 page1 = ui.page_fluid(
@@ -58,7 +74,25 @@ app_ui = ui.page_navbar(
 def server(input, output, session):
     @render_widget  
     def map():
-        return Map(center=(53.4494762, -7.5029786), zoom=6)
+        map = Map(center=(53.4494762, -7.5029786), zoom=6)
+
+        geo_json = GeoJSON(  
+            data=country_boundaries,  
+            style={  
+                "opacity": 1,  
+                "dashArray": "9",  
+                "fillOpacity": 0.1,  
+                "weight": 1,  
+            },
+            hover_style={"color": "white", "dashArray": "0", "fillOpacity": 0.5},  
+            style_callback=random_color,  
+        )  
+        map.add_layer(geo_json)  
+
+        point = Marker(location=(52.204793, 0.121558), draggable=False)  
+        map.add_layer(point)  
+        
+        return map
     
     @render.plot
     def hist():
